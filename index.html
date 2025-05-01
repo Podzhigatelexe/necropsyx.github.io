@@ -3,35 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>necropsyx | Blackened Biography</title>
+    <title>NECROPSYX | Black Metal Entity</title>
     <style>
         :root {
-            --main-color: #8B0000; /* Blood red */
-            --secondary-color: #2F4F4F; /* Dark slate */
-            --bg-color: #0A0A0A;
-            --text-color: #C0C0C0;
+            --blood: #8B0000;
+            --void: #0A0A0A;
+            --bones: #C0C0C0;
+            --ritual-glow: rgba(139,0,0,0.3);
         }
 
         @font-face {
-            font-family: 'MetalLord';
+            font-family: 'CrypticFont';
             src: url('https://fonts.cdnfonts.com/s/14550/BlackletterMono-Bold.woff') format('woff');
         }
 
         body {
-            background: var(--bg-color) url('https://www.transparenttextures.com/patterns/asfalt-dark.png');
-            color: var(--text-color);
-            line-height: 1.6;
-            font-family: 'MetalLord', 'Times New Roman', serif;
+            background: 
+                radial-gradient(circle at center, #1a1a1a 0%, #0A0A0A 100%),
+                url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASwAAACoCAMAAABt9SM9AAAAA1BMVEVHcEyC+tLSAAAAR0lEQVR4nO3BAQ0AAADCoPdPbQ43oAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPBgxUwAAQ0KZW5kc3RyZWFtDWVuZG9iag0xIDAgb2JqDTw8L0NvbG9yU3BhY2UvRGV2aWNlUkdCL1N1YnR5cGUvSW1hZ2UvSGVpZ2h0IDI1Ni9GaWx0ZXIvRENURGVjb2RlL1R5cGUvWE9iamVjdC9XaWR0aCAyNTYvQml0c1BlckNvbXBvbmVudCA4Pj5zdHJlYW0K/9j/4AAQSkZJRgABAQEAYABgAAD/2wBDAAoHBwgHBgoICAgLCgoLDhgQDg0NDh0VFhEYIx8lJCIfIiEmKzcvJik0KSEiMEExNDk7Pj4+JS5ESUM8SDc9Pjv/2wBDAQoLCw4NDhwQEBw7KCIoOzs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozv/wAARCAEAAQADASIAAhEBAxEB/8QAGwAAAQUBAQAAAAAAAAAAAAAAAAECAwQFBgf/xAA2EAACAQMDAgQEBAUEAwEAAAAAAQIDBBEhBRJBMQYTQVEiYXGBkRQyobHB0fAVI0JS4f');
+            color: var(--bones);
+            font-family: 'CrypticFont', cursive;
+            line-height: 1.8;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
         }
 
         header {
-            background: linear-gradient(rgba(0,0,0,0.9), rgba(0,0,0,0.7)),
-                        url('https://i.pinimg.com/736x/82/e4/b9/82e4b9595e1eb899e011f7a5039bcce9.jpg');
-            background-size: cover;
-            background-position: center;
-            padding: 2rem;
             text-align: center;
-            border-bottom: 5px solid var(--main-color);
+            padding: 4rem 0;
+            border-bottom: 3px solid var(--blood);
             position: relative;
             overflow: hidden;
         }
@@ -44,115 +49,144 @@
             width: 100%;
             height: 100%;
             background: repeating-linear-gradient(
-                0deg,
+                45deg,
                 transparent,
-                transparent 2px,
-                rgba(139,0,0,0.1) 2px,
-                rgba(139,0,0,0.1) 4px
+                transparent 5px,
+                var(--ritual-glow) 5px,
+                var(--ritual-glow) 10px
             );
         }
 
         .avatar {
-            width: 150px;
-            height: 150px;
+            width: 200px;
+            height: 200px;
             border-radius: 50%;
-            border: 3px solid var(--main-color);
-            margin: 1rem auto;
-            box-shadow: 0 0 20px rgba(139,0,0,0.5);
-            filter: grayscale(30%);
-        }
-
-        .reveal-btn {
-            background: none;
-            border: 2px solid var(--main-color);
-            color: var(--text-color);
-            padding: 10px 25px;
-            font-size: 1.2em;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin: 20px 0;
-        }
-
-        .reveal-btn:hover {
-            background: var(--main-color);
-            letter-spacing: 3px;
-        }
-
-        .facts-container {
-            max-width: 600px;
+            border: 5px solid var(--blood);
             margin: 2rem auto;
-            padding: 0 20px;
-            display: none;
-        }
-
-        .fact-item {
-            background: rgba(15, 15, 15, 0.9);
-            margin: 15px 0;
-            padding: 15px;
-            border-left: 4px solid var(--main-color);
-            position: relative;
+            box-shadow: 0 0 30px var(--ritual-glow);
             transition: transform 0.3s ease;
         }
 
-        .fact-item:hover {
-            transform: translateX(10px);
+        .avatar:hover {
+            transform: rotate(666deg) scale(1.1);
         }
 
-        .band-mention {
+        .bio-section {
+            margin: 3rem 0;
+            padding: 2rem;
+            background: rgba(0,0,0,0.7);
+            border-left: 5px solid var(--blood);
+        }
+
+        .facts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .fact-card {
+            padding: 1.5rem;
+            background: rgba(15,15,15,0.9);
+            border: 2px solid var(--blood);
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .fact-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px var(--ritual-glow);
+        }
+
+        .contact-links {
             text-align: center;
-            font-size: 1.5em;
-            margin: 30px 0;
-            text-shadow: 2px 2px 2px rgba(139,0,0,0.5);
+            margin: 3rem 0;
         }
 
-        .band-mention::before, 
-        .band-mention::after {
-            content: '†';
-            margin: 0 10px;
-            color: var(--main-color);
+        .ritual-link {
+            color: var(--bones);
+            text-decoration: none;
+            padding: 1rem 2rem;
+            border: 2px solid var(--blood);
+            margin: 1rem;
+            display: inline-block;
+            transition: all 0.3s ease;
+        }
+
+        .ritual-link:hover {
+            background: var(--blood);
+            letter-spacing: 3px;
+        }
+
+        @media (max-width: 768px) {
+            .avatar {
+                width: 150px;
+                height: 150px;
+            }
+            
+            .container {
+                padding: 1rem;
+            }
         }
     </style>
 </head>
 <body>
-    <header>
-        <h1 style="font-size: 2.5em; text-shadow: 3px 3px 3px black;">NECROPSYX</h1>
-        <img src="https://i.pinimg.com/736x/82/e4/b9/82e4b9595e1eb899e011f7a5039bcce9.jpg" 
-             alt="Dark Avatar" 
-             class="avatar">
-    </header>
+    <div class="container">
+        <header>
+            <h1 style="font-size: 3em; text-shadow: 3px 3px 3px #000;">NECROPSYX</h1>
+            <img src="https://i.pinimg.com/736x/82/e4/b9/82e4b9595e1eb899e011f7a5039bcce9.jpg" 
+                 alt="Dark Avatar" 
+                 class="avatar">
+        </header>
 
-    <div style="text-align: center;">
-        <button class="reveal-btn" onclick="toggleFacts()">Reveal the Truth</button>
+        <div class="bio-section">
+            <h2 style="color: var(--blood);">Entity Manifestation</h2>
+            <div class="facts-grid">
+                <div class="fact-card">
+                    <h3>≛ Bio Data</h3>
+                    <p>» Country: Mother Russia</p>
+                    <p>» Age: Timeless</p>
+                    <p>» Location: Void</p>
+                </div>
+
+                <div class="fact-card">
+                    <h3>≛ Digital Sigils</h3>
+                    <p>» Roblox: IDKboyUsername077</p>
+                    <p>» Telegram: @Necropsyx</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="bio-section">
+            <h2 style="color: var(--blood);">Blackened Truths</h2>
+            <div class="facts-grid">
+                <div class="fact-card">
+                    <p>♱ I breathe Black Metal</p>
+                    <p>♱ Music flows in my veins</p>
+                    <p>♱ Orthodox roots in Satanic soil</p>
+                </div>
+                
+                <div class="fact-card">
+                    <p>♱ Sleep phase alchemist</p>
+                    <p>♱ Collector of forbidden frequencies</p>
+                    <p>♱ Architect of digital voids</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="contact-links">
+            <a href="https://t.me/+pxLCutxk0ANhZjFi" 
+               class="ritual-link"
+               target="_blank">
+                Join the Ritual (Telegram Channel)
+            </a>
+            <br>
+            <a href="https://t.me/Necropsyx" 
+               class="ritual-link"
+               target="_blank">
+                Summon via Telegram
+            </a>
+        </div>
     </div>
-
-    <div class="facts-container" id="facts">
-        <div class="fact-item">♱ I listen to Black Metal</div>
-        <div class="fact-item">♱ Roblox player: IDKboyUsername077</div>
-        <div class="fact-item">♱ Music is my oxygen</div>
-        <div class="fact-item">♱ Orthodox Christian with Black Metal soul</div>
-        <div class="fact-item">♱ Sleep phase traveler via autosuggestion</div>
-    </div>
-
-    <div class="band-mention">
-        "In the Shadows of Forgotten Tomb"
-    </div>
-
-    <script>
-        function toggleFacts() {
-            const facts = document.getElementById('facts');
-            const btn = document.querySelector('.reveal-btn');
-            if (facts.style.display === 'none' || !facts.style.display) {
-                facts.style.display = 'block';
-                btn.textContent = 'Hide the Truth';
-                btn.style.backgroundColor = 'var(--main-color)';
-            } else {
-                facts.style.display = 'none';
-                btn.textContent = 'Reveal the Truth';
-                btn.style.backgroundColor = 'transparent';
-            }
-        }
-    </script>
 </body>
 </html>
