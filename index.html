@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>necropsyx | Blackened Biography</title>
+    <style>
+        :root {
+            --main-color: #8B0000; /* Blood red */
+            --secondary-color: #2F4F4F; /* Dark slate */
+            --bg-color: #0A0A0A;
+            --text-color: #C0C0C0;
+        }
+
+        @font-face {
+            font-family: 'MetalLord';
+            src: url('https://fonts.cdnfonts.com/s/14550/BlackletterMono-Bold.woff') format('woff');
+        }
+
+        body {
+            background: var(--bg-color) url('https://www.transparenttextures.com/patterns/asfalt-dark.png');
+            color: var(--text-color);
+            line-height: 1.6;
+            font-family: 'MetalLord', 'Times New Roman', serif;
+        }
+
+        header {
+            background: linear-gradient(rgba(0,0,0,0.9), rgba(0,0,0,0.7)),
+                        url('https://i.pinimg.com/736x/82/e4/b9/82e4b9595e1eb899e011f7a5039bcce9.jpg');
+            background-size: cover;
+            background-position: center;
+            padding: 2rem;
+            text-align: center;
+            border-bottom: 5px solid var(--main-color);
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: repeating-linear-gradient(
+                0deg,
+                transparent,
+                transparent 2px,
+                rgba(139,0,0,0.1) 2px,
+                rgba(139,0,0,0.1) 4px
+            );
+        }
+
+        .avatar {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 3px solid var(--main-color);
+            margin: 1rem auto;
+            box-shadow: 0 0 20px rgba(139,0,0,0.5);
+            filter: grayscale(30%);
+        }
+
+        .reveal-btn {
+            background: none;
+            border: 2px solid var(--main-color);
+            color: var(--text-color);
+            padding: 10px 25px;
+            font-size: 1.2em;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin: 20px 0;
+        }
+
+        .reveal-btn:hover {
+            background: var(--main-color);
+            letter-spacing: 3px;
+        }
+
+        .facts-container {
+            max-width: 600px;
+            margin: 2rem auto;
+            padding: 0 20px;
+            display: none;
+        }
+
+        .fact-item {
+            background: rgba(15, 15, 15, 0.9);
+            margin: 15px 0;
+            padding: 15px;
+            border-left: 4px solid var(--main-color);
+            position: relative;
+            transition: transform 0.3s ease;
+        }
+
+        .fact-item:hover {
+            transform: translateX(10px);
+        }
+
+        .band-mention {
+            text-align: center;
+            font-size: 1.5em;
+            margin: 30px 0;
+            text-shadow: 2px 2px 2px rgba(139,0,0,0.5);
+        }
+
+        .band-mention::before, 
+        .band-mention::after {
+            content: '†';
+            margin: 0 10px;
+            color: var(--main-color);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1 style="font-size: 2.5em; text-shadow: 3px 3px 3px black;">NECROPSYX</h1>
+        <img src="https://i.pinimg.com/736x/82/e4/b9/82e4b9595e1eb899e011f7a5039bcce9.jpg" 
+             alt="Dark Avatar" 
+             class="avatar">
+    </header>
+
+    <div style="text-align: center;">
+        <button class="reveal-btn" onclick="toggleFacts()">Reveal the Truth</button>
+    </div>
+
+    <div class="facts-container" id="facts">
+        <div class="fact-item">♱ I listen to Black Metal</div>
+        <div class="fact-item">♱ Roblox player: IDKboyUsername077</div>
+        <div class="fact-item">♱ Music is my oxygen</div>
+        <div class="fact-item">♱ Orthodox Christian with Black Metal soul</div>
+        <div class="fact-item">♱ Sleep phase traveler via autosuggestion</div>
+    </div>
+
+    <div class="band-mention">
+        "In the Shadows of Forgotten Tomb"
+    </div>
+
+    <script>
+        function toggleFacts() {
+            const facts = document.getElementById('facts');
+            const btn = document.querySelector('.reveal-btn');
+            if (facts.style.display === 'none' || !facts.style.display) {
+                facts.style.display = 'block';
+                btn.textContent = 'Hide the Truth';
+                btn.style.backgroundColor = 'var(--main-color)';
+            } else {
+                facts.style.display = 'none';
+                btn.textContent = 'Reveal the Truth';
+                btn.style.backgroundColor = 'transparent';
+            }
+        }
+    </script>
+</body>
+</html>
